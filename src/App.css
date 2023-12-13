@@ -1,14 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
 .App {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 50px;
-  text-align: center;
 }
 
 table {
   width: 80vw;
+  text-align: center;
+  table-layout: fixed;
 }
 
 tbody {
@@ -35,24 +43,7 @@ table tbody tr:not(:last-child) {
 
 td {
   padding: 15px;
-}
-
-.slider {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.slider > p {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.slider input[type="range"] {
-  width: 420px;
-  height: 2px;
-  background: black;
-  border: none;
-  outline: none;
+  overflow: hidden;
 }
 
 .loader {
@@ -69,4 +60,85 @@ td {
 .patient-table {
   height: auto;
   overflow-y: auto;
+}
+
+.dual_slider_box {
+  width: 500px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.dual_slider {
+  width: 75%;
+  height: 2px;
+  position: relative;
+  background-color: #dddddd;
+}
+
+.range_track {
+  height: 100%;
+  position: absolute;
+  background-color: dodgerblue;
+}
+
+input {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+input::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: dodgerblue;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin-bottom: 1px;
+}
+input::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: dodgerblue;
+  pointer-events: auto;
+  -moz-appearance: none;
+  cursor: pointer;
+  margin-top: 30%;
+}
+
+.minvalue {
+  position: absolute;
+  padding: 6px 15px;
+  background: dimgray;
+  border-radius: 1rem;
+  color: white;
+  bottom: 0;
+  transform: translate(0, -100%);
+  left: 0;
+  font-size: 1rem;
+  transition: left 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  will-change: left, transform;
+}
+.maxvalue {
+  position: absolute;
+  padding: 6px 15px;
+  background: dimgray;
+  border-radius: 1rem;
+  color: white;
+  bottom: 0;
+  transform: translate(0, -100%);
+  right: 0;
+  font-size: 1rem;
+  transition: right 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  will-change: right, transform;
 }
